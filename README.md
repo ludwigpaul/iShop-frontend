@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# iShop Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+iShop Frontend is a React-based web application providing a modern, responsive interface for the iShop platform. It connects to the iShop backend via REST APIs and offers a seamless shopping and administration experience.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### 🛒 Customer Features
+- **Product Browsing:** View products with images, descriptions, prices, and categories.
+- **Search & Filter:** Search products by name and filter by category, price, or rating.
+- **Product Details:** See detailed information and reviews for each product.
+- **Shopping Cart:** Add, update, or remove products in the cart with real-time price calculation.
+- **Checkout:** Secure checkout process with form validation and order summary.
+- **User Authentication:** Register, log in, and manage user sessions.
+- **Order History:** View past orders and order details.
 
-### `npm start`
+### 🛠️ Admin Features
+- **Dashboard:** Overview of sales, orders, and user statistics.
+- **Product Management:** Add, edit, or delete products with image upload support.
+- **Order Management:** View, update, and manage customer orders.
+- **User Management:** View and manage registered users and their roles.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🌐 General Features
+- **Responsive Design:** Mobile-friendly layout using CSS frameworks.
+- **API Integration:** Communicates with the iShop backend for all data operations.
+- **State Management:** Uses React Context or Redux for global state.
+- **Error Handling:** User-friendly error messages and loading indicators.
+- **Environment Config:** Supports `.env` files for API endpoints and secrets.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
+- Node.js (v16+ recommended)
+- npm
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+1. Clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+git clone https://github.com/yourusername/ishop-frontend.git cd ishop-frontend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies: 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm install
 
-### `npm run eject`
+3. Create a `.env` file for environment variables (see `.env.example` if available).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Running the App
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Start the development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Build for production:
 
-## Learn More
+npm run build
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Run tests:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm test
 
-### Code Splitting
+## Folder Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `src/` — React source code (components, pages, context, utils)
+- `public/` — Static assets and HTML template
+- `.env` — Environment variables
 
-### Analyzing the Bundle Size
+## Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- `npm start` — Start development server
+- `npm run build` — Build for production
+- `npm test` — Run tests
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
