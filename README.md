@@ -1,74 +1,115 @@
 # iShop Frontend
 
-iShop Frontend is a React-based web application providing a modern, responsive interface for the iShop platform. It connects to the iShop backend via REST APIs and offers a seamless shopping and administration experience.
+## Introduction
+This is the frontend for the iShop e-commerce platform, built with React.js and Material UI. It provides user, admin, and worker interfaces for shopping, order management, and dashboard operations.
+
+---
 
 ## Features
 
-### 🛒 Customer Features
-- **Product Browsing:** View products with images, descriptions, prices, and categories.
-- **Search & Filter:** Search products by name and filter by category, price, or rating.
-- **Product Details:** See detailed information and reviews for each product.
-- **Shopping Cart:** Add, update, or remove products in the cart with real-time price calculation.
-- **Checkout:** Secure checkout process with form validation and order summary.
-- **User Authentication:** Register, log in, and manage user sessions.
-- **Order History:** View past orders and order details.
+### User
+- Register, verify email, and login
+- Browse products and categories
+- Add products to cart and place orders
+- View and update profile
+- View order history and order details
 
-### 🛠️ Admin Features
-- **Dashboard:** Overview of sales, orders, and user statistics.
-- **Product Management:** Add, edit, or delete products with image upload support.
-- **Order Management:** View, update, and manage customer orders.
-- **User Management:** View and manage registered users and their roles.
+### Admin
+- Secure admin login (JWT)
+- View all users
+- View all orders (with assigned worker name or "Not assigned yet")
+- Assign orders to workers
+- View all workers
+- View orders assigned to a specific worker
 
-### 🌐 General Features
-- **Responsive Design:** Mobile-friendly layout using CSS frameworks.
-- **API Integration:** Communicates with the iShop backend for all data operations.
-- **State Management:** Uses React Context or Redux for global state.
-- **Error Handling:** User-friendly error messages and loading indicators.
-- **Environment Config:** Supports `.env` files for API endpoints and secrets.
+### Worker
+- Secure worker login (JWT)
+- View assigned orders
+- Mark orders as completed (triggers email notification to user)
 
-## Getting Started
+---
 
-### Prerequisites
-- Node.js (v16+ recommended)
-- npm
+## Tech Stack
 
-### Installation
+- **React.js** (with hooks)
+- **Material UI** (UI components)
+- **React Router** (routing)
+- **Axios** (API requests)
+- **JWT** (authentication, via backend)
+- **Stripe** (payment integration)
 
-1. Clone the repository:
+---
 
-git clone https://github.com/yourusername/ishop-frontend.git cd ishop-frontend
+## Project Structure
 
-2. Install dependencies: 
+```
+src/
+├── components/          # Reusable components
+├── pages/               # Page components
+├── services/            # API service functions
+├── store/               # Redux store and slices
+├── styles/              # Global styles and themes
+├── utils/               # Utility functions
+├── App.js               # Main application component
+├── index.js             # Entry point
+└── setupTests.js        # Test setup
+```
+---
 
-npm install
+## Environment Variables
 
-3. Create a `.env` file for environment variables (see `.env.example` if available).
+Create a `.env` file in the root with:
 
-### Running the App
+REACT_APP_API_URL=http://localhost:3000/api/v1
 
-- Start the development server:
+---
 
-npm start
+## How to Run
 
-- Build for production:
+1. Install Node.js.
+2. Run `npm install` in the `ishop-frontend/` directory.
+3. Set up your `.env` file as above.
+4. Start the app:
+5. The app will run at `http://localhost:3002` (or as configured).
 
-npm run build
+---
 
-- Run tests:
+## Authentication
 
-npm test
+- JWT tokens are stored in `localStorage` after login.
+- Tokens are sent in the `Authorization` header for protected API requests.
+- Role-based redirects are handled in `App.js`.
 
-## Folder Structure
+---
 
-- `src/` — React source code (components, pages, context, utils)
-- `public/` — Static assets and HTML template
-- `.env` — Environment variables
+## Key Libraries
 
-## Scripts
+- **react**: UI framework
+- **@mui/material**: Material UI components
+- **react-router-dom**: Routing
+- **axios**: HTTP requests
+- **jwt-decode**: JWT parsing
+- **stripe-js**: Payment integration
 
-- `npm start` — Start development server
-- `npm run build` — Build for production
-- `npm test` — Run tests
+---
+
+## Notes
+
+- The frontend expects the backend to be running and accessible at the API URL.
+- Admin and worker dashboards require valid JWT tokens and roles.
+- Email verification is required for new users.
+
+---
+
+## Future Enhancements
+
+- Responsive/mobile UI improvements
+- Enhanced error handling and notifications
+- User order history and tracking
+- Product search and filtering
+- Multi-language support
+
+---
 
 ## License
 

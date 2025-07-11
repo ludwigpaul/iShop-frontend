@@ -80,6 +80,9 @@ export const updateUserProfile = async (userId, userData) => {
     }
 };
 
-
+export const getOrdersByWorkerId = async (workerId) => {
+    const response = await api.get(`/worker/${workerId}/orders`);
+    return response.data;
+};
 
 export default api;

@@ -13,13 +13,12 @@ const WorkerLogin = () => {
         e.preventDefault();
         setError('');
         try {
-            const res = await fetch('http://localhost:3000/api/v1/users/worker/login', {
+            const res = await fetch('http://localhost:3000/api/v1/auth/login/worker', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     username: btoa(username),
-                    password: btoa(password),
-                    email: '' // or remove if not needed
+                    password: btoa(password)
                 }),
             });
             if (!res.ok) {
@@ -30,7 +29,7 @@ const WorkerLogin = () => {
             localStorage.setItem('token', accessToken);
             localStorage.setItem('userId', userId);
             localStorage.setItem('role', 'worker');
-            navigate('/admin/worker/dashboard');
+            navigate('/worker/dashboard');
         } catch (err) {
             setError(err.message);
         }
