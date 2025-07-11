@@ -56,7 +56,7 @@ const Navbar = () => {
                             onClick={() => {
                                 localStorage.removeItem('token');
                                 localStorage.removeItem('userId');
-                                navigate('/login');
+                                navigate('/products');
                             }}
                         >
                             Logout
@@ -70,7 +70,7 @@ const Navbar = () => {
                         <Button color="inherit" onClick={() => navigate('/admin/login')}>
                             Admin Login
                         </Button>
-                        <Button color="inherit" component={Link} to="auth/worker/login">
+                        <Button color="inherit" component={Link} to="auth/login/worker">
                             Worker Login
                         </Button>
                     </>

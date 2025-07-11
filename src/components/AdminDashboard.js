@@ -26,6 +26,7 @@ const AdminDashboard = () => {
     const [orderPage, setOrderPage] = useState(0);
     const [orderRowsPerPage, setOrderRowsPerPage] = useState(5);
 
+    // Fetch data
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -33,7 +34,6 @@ const AdminDashboard = () => {
             const token = localStorage.getItem('token');
             const headers = { Authorization: `Bearer ${token}` };
             try {
-                // Fetch users and orders first
                 const [usersRes, ordersRes] = await Promise.all([
                     fetch('http://localhost:3000/api/v1/admin/users', { headers }),
                     fetch('http://localhost:3000/api/v1/admin/orders', { headers })
@@ -46,7 +46,6 @@ const AdminDashboard = () => {
                 setFilteredUsers(usersData);
                 setOrders(ordersData);
 
-                // Fetch workers separately, don't block users/orders if it fails
                 try {
                     const workersRes = await fetch('http://localhost:3000/api/v1/admin/workers', { headers });
                     if (workersRes.ok) {
@@ -75,21 +74,13 @@ const AdminDashboard = () => {
         ));
     };
 
-    // Handle pagination for users
-    const handleUserPageChange = (event, newPage) => {
-        setUserPage(newPage);
-    };
-
+    // Pagination handlers
+    const handleUserPageChange = (event, newPage) => setUserPage(newPage);
     const handleUserRowsPerPageChange = (event) => {
         setUserRowsPerPage(parseInt(event.target.value, 10));
         setUserPage(0);
     };
-
-    // Handle pagination for orders
-    const handleOrderPageChange = (event, newPage) => {
-        setOrderPage(newPage);
-    };
-
+    const handleOrderPageChange = (event, newPage) => setOrderPage(newPage);
     const handleOrderRowsPerPageChange = (event) => {
         setOrderRowsPerPage(parseInt(event.target.value, 10));
         setOrderPage(0);
@@ -203,6 +194,7 @@ const AdminDashboard = () => {
                                         <TableRow>
                                             <TableCell>Order ID</TableCell>
                                             <TableCell>User ID</TableCell>
+                                            <TableCell>Assigned Worker</TableCell>
                                             <TableCell>Assign to Worker</TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -213,6 +205,9 @@ const AdminDashboard = () => {
                                                 <TableRow key={o.id}>
                                                     <TableCell>{o.id}</TableCell>
                                                     <TableCell>{o.user_id}</TableCell>
+                                                    <TableCell>
+                                                        {o.worker_name ? o.worker_name : 'Not assigned yet'}
+                                                    </TableCell>
                                                     <TableCell>
                                                         <select
                                                             value={assignments[o.id] || ''}

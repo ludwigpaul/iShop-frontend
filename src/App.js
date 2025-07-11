@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import {loadStripe} from '@stripe/stripe-js';
 import Navbar from './components/layout/Navbar';
 import Products from './pages/Products';
 import Cart from './pages/Cart';
@@ -15,6 +16,7 @@ import AdminLogin from './components/AdminLogin';
 import VerifyEmail from './pages/VerifyEmail';
 import WorkerDashboard from "./components/WorkerDashboard";
 import WorkerLogin from './components/WorkerLogin';
+import StripeProvider from './contexts/StripeProvider';
 import './App.css';
 
 function AppRoutes() {
@@ -55,8 +57,8 @@ function AppRoutes() {
                 <Route path="/payment" element={<PaymentPage />} />
                 <Route path="/admin" element={<AdminDashboard />} />
                 <Route path="/admin/dashboard" element={<AdminDashboard />} />
-                <Route path="/login/worker" element={<WorkerLogin />} />
-                <Route path="/admin/worker/dashboard" element={<WorkerDashboard />} />
+                <Route path="/auth/login/worker" element={<WorkerLogin />} />
+                <Route path="/worker/dashboard" element={<WorkerDashboard />} />
                 <Route path="/admin/login" element={<AdminLogin />} />
                 <Route path="/thank-you" element={<ThankYouPage />} />
             </Routes>
@@ -66,9 +68,11 @@ function AppRoutes() {
 
 function App() {
     return (
-        <Router>
-            <AppRoutes />
-        </Router>
+        <StripeProvider>
+            <Router>
+                <AppRoutes />
+            </Router>
+        </StripeProvider>
     );
 }
 
