@@ -20,7 +20,7 @@ pipeline {
                     // Checkout code with proper configuration
                     def scmVars = checkout([
                         $class: 'GitSCM',
-                        branches: [[name: '*main']], // or '*/master' if that's your default branch
+                        branches: [[name: '*/main']], // or '*/master' if that's your default branch
                         doGenerateSubmoduleConfigurations: false,
                         extensions: [
                             [$class: 'CleanCheckout'],
