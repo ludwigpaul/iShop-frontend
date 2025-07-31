@@ -53,7 +53,7 @@ pipeline {
 
          stage('Environment Info') {
                     steps {
-                        bat '''
+                        sh '''
                             whoami
                             id
                             echo "Node version: $(node --version)"
@@ -67,21 +67,21 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo "Installing dependencies..."
-                bat 'npm install'
+                sh 'npm install'
                 echo "Installing finished."
             }
         }
         stage('Build') {
             steps {
                 echo "Building..."
-                bat 'npm run build'
+                sh 'npm run build'
                 echo "Finished building."
             }
         }
         stage('Authenticate to GCP') {
             steps {
                 withCredentials([file(credentialsId: 'calvary-revival-ministries-f4be12e8905e.json', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-                    bat '''
+                    sh '''
                         gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
                         gcloud config set project $GCLOUD_PROJECT
                     '''
@@ -90,7 +90,7 @@ pipeline {
         }
         stage('Deploy to GCS') {
             steps {
-                bat 'gsutil -m rsync -r build/ $GCLOUD_BUCKET'
+                sh 'gsutil -m rsync -r build/ $GCLOUD_BUCKET'
             }
         }
     }
