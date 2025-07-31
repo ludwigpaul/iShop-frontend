@@ -1,8 +1,4 @@
 # Build stage
-FROM jenkins/jenkins:lts
-USER root
-RUN apt-get update && apt-get install -y groovy
-USER jenkins
 FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
