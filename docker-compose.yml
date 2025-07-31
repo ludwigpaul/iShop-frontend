@@ -1,17 +1,16 @@
 version: '3.8'
 services:
-  jservices:
-    jenkins:
-      build:
-        context: .
-        dockerfile: Jenkins.Dockerfile
-      ports:
-        - "8080:8080"
-        - "50000:50000"
-      volumes:
-        - jenkins_home:/var/jenkins_home
-      environment:
-        - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+  jenkins:
+    build:
+      context: .
+      dockerfile: Jenkins.Dockerfile
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
 
   frontend:
     build:
