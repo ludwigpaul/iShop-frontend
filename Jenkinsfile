@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         GCLOUD_PROJECT = 'calvary-revival-ministries'
-        GCLOUD_BUCKET = 'gs://calvaryrevival.org'
+        GCLOUD_BUCKET = 'gs://ishopfrontend'
         GCLOUD_CREDENTIALS = credentials('calvary-revival-ministries-f4be12e8905e.json') // Jenkins secret ID
         NODE_VERSION = '18'
         GIT_CREDENTIALS_ID = 'gitHubCredentials'
@@ -91,6 +91,7 @@ pipeline {
         stage('Deploy to GCS') {
             steps {
                 sh 'gsutil -m rsync -r build/ $GCLOUD_BUCKET'
+
             }
         }
     }
