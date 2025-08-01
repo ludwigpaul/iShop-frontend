@@ -71,13 +71,13 @@ pipeline {
                 echo "Installing finished."
             }
         }
-//         stage('Build') {
-//             steps {
-//                 echo "Building..."
-//                 sh 'npm run build'
-//                 echo "Finished building."
-//             }
-//         }
+        stage('Build') {
+            steps {
+                echo "Building..."
+                sh 'npm run build'
+                echo "Finished building."
+            }
+        }
         stage('Authenticate to GCP') {
             steps {
                 withCredentials([file(credentialsId: 'calvary-revival-ministries-f4be12e8905e.json', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
