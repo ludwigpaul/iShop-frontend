@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import {loadStripe} from '@stripe/stripe-js';
 import Navbar from './components/layout/Navbar';
 import Products from './pages/Products';
 import Cart from './pages/Cart';

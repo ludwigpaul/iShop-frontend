@@ -18,9 +18,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart, updateQuantity, clearCart } from '../store/slices/cartSlice';
+import { removeFromCart, updateQuantity } from '../store/slices/cartSlice';
 import { useNavigate } from 'react-router-dom';
-import { createOrder } from '../services/api';
 
 const Cart = () => {
     const { items, total } = useSelector((state) => state.cart);
